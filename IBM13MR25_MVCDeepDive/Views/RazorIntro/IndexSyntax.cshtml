@@ -1,0 +1,106 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndexSyntax</title>
+   
+</head>
+<body>
+    <div>
+        CS - Server Side Code
+        HTML is Client Side Code
+
+        =CSHTML
+
+        <h3>@@{} is  Razor server Side Block </h3>
+        @{
+
+            string _msg = "Hello Razor";
+            string _msgScript = " <script>alert('Hacked....')</script>";
+        }
+
+
+        <h3> @@Expression (implicit - html by default Encoded) </h3>
+        <h4> @@_msg = @_msg </h4>
+        <h4> @@_msgScript = @_msgScript </h4>
+
+
+        <h3> @@Expression (implicit - Raw) </h3>
+        <h4> @@_msgScript = @Html.Raw(_msgScript) </h4>
+
+        <p> for Explicit Expression in two Scenarios 1. generic Method Call , Expression not identified   </p>
+
+        @{
+            T Min<T>(T a, T b)
+            {
+                return a;
+            }
+
+
+            int ProductID = 1000;
+
+        }
+
+        @Min(100, 200) is fine..
+
+        <h3> @@() Explicit Expression</h3>
+        but @@(Min&lt;T&gt;("a","b"))
+        result =  @(Min<string>("a", "b"))
+
+        <b>demo@yahoo.com</b>   => Razor Engine Considers it to be Email @@ is Ignored
+
+        ProductID@ProductID @@ is Ignored
+        ProductID@(ProductID) @@ Explicit Expression to Solve it
+
+        @{ 
+
+            string a1 = "Some value in Var A"; // Server Side
+
+            <h2> Client Side: value of A is  @a1</h2>
+
+
+            <p> demo </p>
+
+            @: for singleline Client Side @@: inside Server side code
+
+            @: this
+            @: is
+            @: a 
+            @: demo, html will render it as a single line 
+
+            <text>
+                    multiple line 
+                    Client 
+                    Side
+                    value
+                    on server Side
+            </text>
+
+        }
+
+        @@Program Construct
+        
+    <ul>
+
+        @for (int i = 0; i < 10; i++)
+        {
+                <li> <b> @i</b></li>
+        }
+    </ul>
+
+
+        @if (true)
+        {
+           <h1>if you see this it is  true...</h1> 
+        }
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "SimpleContentPage";
+}
+
+<h3>Simple Content Page </h3>
+
+
+<h1 id="hd1"> Default Value </h1>
+@section Script
+    {
+    <script>
+
+        alert("Hi From Script")
+        $("#hd1").html("Now It is Changed set through JQUERY")
+
+    </script>
+
+
+}
+
+
+@section Footer
+    {
+    <footer>
+        <h3> Footer From Content Page .... </h3>
+    </footer>
+}
