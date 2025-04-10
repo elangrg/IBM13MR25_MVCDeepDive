@@ -1,3 +1,4 @@
+using IBM13MR25_MVCDeepDive.Infra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace IBM13MR25_MVCDeepDive
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Models.BookTitle), new BookTitleCustomBinder());
         }
     }
 }

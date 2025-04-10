@@ -1,0 +1,26 @@
+﻿@model IBM13MR25_MVCDeepDive.Models.BookTitle
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<form id="Home" action="" method="POST">
+    Book Title     <input id="BookTitle" name="Title" value="" type="text" /><br />
+    Day     <input id="Day" name="Day" value="" type="text" />
+    Month   <input id="Month" name="Month" value="" type="text" />
+    Year    <input id="Year" name="Year" value="" type="text" />
+    <input id="Submit" type="Submit" value="Submit" />
+</form>
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
